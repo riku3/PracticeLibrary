@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3263BF14279A76AF00628D89 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3263BF13279A76AF00628D89 /* AddressModel.swift */; };
 		32A4EC14279A540700148DB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A4EC13279A540700148DB4 /* AppDelegate.swift */; };
 		32A4EC16279A540700148DB4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A4EC15279A540700148DB4 /* SceneDelegate.swift */; };
 		32A4EC18279A540700148DB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A4EC17279A540700148DB4 /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3263BF13279A76AF00628D89 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		32A4EC10279A540700148DB4 /* PracticeLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticeLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A4EC13279A540700148DB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32A4EC15279A540700148DB4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				32A4EC13279A540700148DB4 /* AppDelegate.swift */,
 				32A4EC15279A540700148DB4 /* SceneDelegate.swift */,
 				32DD3F1E279A6EFF00E93B35 /* Article.swift */,
+				3263BF13279A76AF00628D89 /* AddressModel.swift */,
 				32A4EC17279A540700148DB4 /* ViewController.swift */,
 				32A4EC19279A540700148DB4 /* Main.storyboard */,
 				32A4EC1C279A540900148DB4 /* Assets.xcassets */,
@@ -175,6 +178,7 @@
 				32A4EC18279A540700148DB4 /* ViewController.swift in Sources */,
 				32A4EC14279A540700148DB4 /* AppDelegate.swift in Sources */,
 				32A4EC16279A540700148DB4 /* SceneDelegate.swift in Sources */,
+				3263BF14279A76AF00628D89 /* AddressModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
