@@ -45,23 +45,40 @@ class ViewController: UIViewController {
         }
     }
     
+//    private func getAddress(zipCode: String) {
+//        let baseUrlString = "http://zipcloud.ibsnet.co.jp/api/"
+//        let searchUrlString = "\(baseUrlString)search"
+//        let searchUrl = URL(string: searchUrlString)!
+//        guard var components = URLComponents(url: searchUrl, resolvingAgainstBaseURL: searchUrl.baseURL != nil) else {
+//            return
+//        }
+//        components.queryItems = [URLQueryItem(name: "zipcode", value: zipCode)] + (components.queryItems ?? [])
+//        var request = URLRequest(url: components.url!)
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.httpMethod = "GET"
+//        URLSession.shared.dataTask(with: request) { data, response, error in
+//            if let error = error {
+//                print("Error: \(error)")
+//                return
+//            }
+//            guard let data = data else {
+//                return
+//            }
+//            do {
+//                self.addresses = try JSONDecoder().decode(AddressModel.self, from: data)
+//                print(self.addresses?.results ?? "")
+//            } catch let error {
+//                print("Error: \(error)")
+//            }
+//        }.resume()
+//    }
     private func getAddress(zipCode: String) {
-        let baseUrlString = "http://zipcloud.ibsnet.co.jp/api/"
-        let searchUrlString = "\(baseUrlString)search"
-        let searchUrl = URL(string: searchUrlString)!
-        guard var components = URLComponents(url: searchUrl, resolvingAgainstBaseURL: searchUrl.baseURL != nil) else {
-            return
-        }
-        components.queryItems = [URLQueryItem(name: "zipcode", value: zipCode)] + (components.queryItems ?? [])
-        var request = URLRequest(url: components.url!)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "GET"
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print("Error: \(error)")
-                return
-            }
-            guard let data = data else {
+        let baseUrl = "http://zipcloud.ibsnet.co.jp/api/"
+        let searchUrl = "\(baseUrl)search"
+        let parameters: [String: Any] = ["zipcode": zipCode]
+        let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        AF.request(searchUrl, method: .get, parameters: parameters, encoding: URLEncoding(destination: .queryString), headers: headers).responseJSON { response in
+            guard let data = response.data else {
                 return
             }
             do {
@@ -70,7 +87,7 @@ class ViewController: UIViewController {
             } catch let error {
                 print("Error: \(error)")
             }
-        }.resume()
+        }
     }
 }
 
