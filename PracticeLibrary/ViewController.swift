@@ -89,6 +89,7 @@ class ViewController: UIViewController {
         getAddress(zipCode: "2790031")
         getGithubProfile()
         getGithubRepository()
+        getGitHubAPI()
     }
     
     private func getGithubProfile() {
@@ -126,6 +127,22 @@ class ViewController: UIViewController {
                 print(error)
                 print("Repository: ERROR EndXXXXXXXXXXXXXXXXXXXXXXXXX")
                 break
+            }
+        }
+    }
+    
+    private func getGitHubAPI() {
+        let provider = GitHubAPIService()
+        provider.send(GitHubAPIService.UserProfileRequest(name: "y-hryk")) {result in
+            switch result {
+            case .success(let response):
+                print("Common: SUCCESS StartXXXXXXXXXXXXXXXXXXXXXXXXX")
+                print(response)
+                print("Common: SUCCESS EndXXXXXXXXXXXXXXXXXXXXXXXXX")
+            case .failure(let error):
+                print("Common: ERROR StartXXXXXXXXXXXXXXXXXXXXXXXXX")
+                print(error)
+                print("Common: ERROR EndXXXXXXXXXXXXXXXXXXXXXXXXX")
             }
         }
     }
