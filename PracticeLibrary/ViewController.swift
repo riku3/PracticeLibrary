@@ -92,8 +92,8 @@ class ViewController: UIViewController {
     }
     
     private func getGithubProfile() {
-        let provider = MoyaProvider<GitHub>()
-        provider.request(.profile(name: "y-hryk")) { result in
+        let provider = MoyaProvider<GitHubAPIService.UserProfileRequest>()
+        provider.request(GitHubAPIService.UserProfileRequest(name: "y-hryk")) { result in
             switch result {
             case let.success(response):
                 let decoder = JSONDecoder()
@@ -111,8 +111,8 @@ class ViewController: UIViewController {
     }
     
     private func getGithubRepository() {
-        let provider = MoyaProvider<GitHub>()
-        provider.request(.repository(name: "y-hryk", type: "all")) { (result) in
+        let provider = MoyaProvider<GitHubAPIService.RepositoryRequest>()
+        provider.request(GitHubAPIService.RepositoryRequest(name: "y-hryk", type: "all")) { (result) in
             switch result {
             case let .success(response):
                 

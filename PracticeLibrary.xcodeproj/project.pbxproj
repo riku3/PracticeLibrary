@@ -16,6 +16,7 @@
 		32A4EC20279A540900148DB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A4EC1E279A540900148DB4 /* LaunchScreen.storyboard */; };
 		32AA7BCD279E4B47009FA9EC /* Moya.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AA7BCC279E4B47009FA9EC /* Moya.xcframework */; };
 		32AA7BCE279E4B47009FA9EC /* Moya.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 32AA7BCC279E4B47009FA9EC /* Moya.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		32AA7BD0279E6606009FA9EC /* GitHubAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AA7BCF279E6606009FA9EC /* GitHubAPIService.swift */; };
 		32DD3F1B279A6CD200E93B35 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A4EC28279A58A000148DB4 /* Alamofire.xcframework */; };
 		32DD3F1C279A6CD200E93B35 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 32A4EC28279A58A000148DB4 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		32DD3F1F279A6EFF00E93B35 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DD3F1E279A6EFF00E93B35 /* Article.swift */; };
@@ -48,6 +49,7 @@
 		32A4EC21279A540900148DB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32A4EC28279A58A000148DB4 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		32AA7BCC279E4B47009FA9EC /* Moya.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Moya.xcframework; path = Carthage/Build/Moya.xcframework; sourceTree = "<group>"; };
+		32AA7BCF279E6606009FA9EC /* GitHubAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIService.swift; sourceTree = "<group>"; };
 		32DD3F17279A6B2900E93B35 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Carthage/Build/Alamofire.xcframework/ios-arm64_i386_x86_64-simulator/Alamofire.framework"; sourceTree = "<group>"; };
 		32DD3F1E279A6EFF00E93B35 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +91,7 @@
 				32A4EC15279A540700148DB4 /* SceneDelegate.swift */,
 				32DD3F1E279A6EFF00E93B35 /* Article.swift */,
 				3263BF13279A76AF00628D89 /* AddressModel.swift */,
+				32AA7BCF279E6606009FA9EC /* GitHubAPIService.swift */,
 				32A4EC17279A540700148DB4 /* ViewController.swift */,
 				32A4EC19279A540700148DB4 /* Main.storyboard */,
 				32A4EC1C279A540900148DB4 /* Assets.xcassets */,
@@ -185,6 +188,7 @@
 				32A4EC14279A540700148DB4 /* AppDelegate.swift in Sources */,
 				32A4EC16279A540700148DB4 /* SceneDelegate.swift in Sources */,
 				3263BF14279A76AF00628D89 /* AddressModel.swift in Sources */,
+				32AA7BD0279E6606009FA9EC /* GitHubAPIService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
