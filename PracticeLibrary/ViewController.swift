@@ -7,6 +7,72 @@
 
 import UIKit
 import Alamofire
+import Moya
+
+struct UserProfile: Codable {
+    let id: Int
+    let name: String
+    let email: String?
+    let avatarUrl: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case email
+        case avatarUrl = "avatar_url"
+    }
+}
+
+struct Repository: Codable {
+
+    let id: Int
+    let name: String
+    let url: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case url = "html_url"
+    }
+}
+
+enum GitHub {
+    case profile(name: String)
+    case repository(name: String, type: String)
+}
+
+extension GitHub: TargetType {
+    var baseURL: URL {
+        return URL(string: "https://api.github.com")!
+    }
+    
+    var path: String {
+        switch self {
+        case let.profile(name):
+            return "/users/\(name)"
+        case let.repository(name, _):
+            return "/users/\(name)/repos"
+        }
+    }
+    
+    var method: Moya.Method {
+        return .get
+    }
+    
+    var task: Task {
+        switch self {
+        case .profile:
+            return .requestPlain
+        case let.repository(_, type):
+            return .requestParameters(parameters: ["type" : type], encoding: URLEncoding.default)
+        }
+    }
+    
+    var headers: [String : String]? {
+        return ["Content-Type": "application/json"]
+    }
+}
+
 
 class ViewController: UIViewController {
 
@@ -21,7 +87,47 @@ class ViewController: UIViewController {
         setup()
         getQiitaArticles()
         getAddress(zipCode: "2790031")
-        
+        getGithubProfile()
+        getGithubRepository()
+    }
+    
+    private func getGithubProfile() {
+        let provider = MoyaProvider<GitHub>()
+        provider.request(.profile(name: "y-hryk")) { result in
+            switch result {
+            case let.success(response):
+                let decoder = JSONDecoder()
+                let profile = try! decoder.decode(UserProfile.self, from: response.data)
+                print("Profile: SUCCESS StartXXXXXXXXXXXXXXXXXXXXXXXXX")
+                print(profile)
+                print("Profile: SUCCESS EndXXXXXXXXXXXXXXXXXXXXXXXXX")
+            case let.failure(error):
+                print("Profile: ERROR StartXXXXXXXXXXXXXXXXXXXXXXXXX")
+                print(error)
+                print("Profile: ERROR EndXXXXXXXXXXXXXXXXXXXXXXXXX")
+                break
+            }
+        }
+    }
+    
+    private func getGithubRepository() {
+        let provider = MoyaProvider<GitHub>()
+        provider.request(.repository(name: "y-hryk", type: "all")) { (result) in
+            switch result {
+            case let .success(response):
+                
+                let decoder = JSONDecoder()
+                let data = try! decoder.decode([Repository].self, from: response.data)
+                print("Repository: SUCCESS StartXXXXXXXXXXXXXXXXXXXXXXXXX")
+                print(data)
+                print("Repository: SUCCESS EndXXXXXXXXXXXXXXXXXXXXXXXXX")
+            case let .failure(error):
+                print("Repository: ERROR StartXXXXXXXXXXXXXXXXXXXXXXXXX")
+                print(error)
+                print("Repository: ERROR EndXXXXXXXXXXXXXXXXXXXXXXXXX")
+                break
+            }
+        }
     }
     
     private func setup() {
@@ -101,8 +207,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = articles[indexPath.row].title
         return cell
     }
-    
-    
 }
 
 
